@@ -43,12 +43,10 @@
 
         // Get input values
         const mathGrade = parseInt(document.getElementById("mathGrade").value);
-        const englishGrade = parseInt(document.getElementById("englishGrade").value);
-
-        // Calculate the average
+        const englishGrade = parseInt(document.getElementById("englishGrade").value)
+        
         const average = ((mathGrade + englishGrade) / 2).toFixed(2);
-
-        // Add new row to the table
+        
         const tableBody = document.querySelector("#gradesTable tbody");
         const row = tableBody.insertRow();
         const rowIndex = tableBody.rows.length;
@@ -57,11 +55,9 @@
         row.insertCell(2).textContent = englishGrade;
         row.insertCell(3).textContent = average;
 
-        // Clear input fields
         document.getElementById("mathGrade").value = "";
         document.getElementById("englishGrade").value = "";
 
-        // Recalculate averages
         updateAverages();
     });
 
@@ -74,19 +70,16 @@
 
         let totalMath = 0, totalEnglish = 0, totalAverage = 0;
 
-        // Sum up the grades and averages
         for (let i = 0; i < numRows; i++) {
             totalMath += parseInt(rows[i].cells[1].textContent);
             totalEnglish += parseInt(rows[i].cells[2].textContent);
             totalAverage += parseFloat(rows[i].cells[3].textContent);
         }
 
-        // Calculate column averages
         const mathAvg = (totalMath / numRows).toFixed(2);
         const englishAvg = (totalEnglish / numRows).toFixed(2);
         const overallAvg = (totalAverage / numRows).toFixed(2);
 
-        // Update the footer
         const footer = document.querySelector("#gradesTable tfoot tr");
         footer.cells[1].textContent = mathAvg;
         footer.cells[2].textContent = englishAvg;
